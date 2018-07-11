@@ -3,6 +3,7 @@
   <div class="triangle"></div>
   <h1>Mon CV</h1>
   <div class="contenu-cv">
+    <a class="downloadlink" href="" download="Claire_Bourgeois_CV.pdf">Téléchargez mon CV <sup>PDF</sup></a>
     <h2>Compétences</h2>
     <div class="competences">
       <div v-bind:key="skill" v-for="skill in skills">
@@ -173,10 +174,19 @@ $bleuclair: #01717D;
     margin-bottom: 40px;
     padding:0;
   }
+ 
   .contenu-cv{
     width: 80%;
     margin: auto;
     font-size: 12px;
+    .downloadlink{
+      text-decoration: none;
+      text-transform: uppercase;
+      color: black;
+      sup{
+          font-size:9px;
+      }
+    }
     .competences{
       line-height: 25px;
       text-transform: uppercase;

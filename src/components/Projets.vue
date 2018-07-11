@@ -1,7 +1,7 @@
 <template>
     <div id="div-projets">
         <div class="triangle"></div>
-        <h1>Mon CV</h1>
+        <h1>Mes projets</h1>
         <div class="mesprojets">
             <div v-bind:key="projet" v-for="projet in projets">
                 <h2>{{projet.titre}}</h2>

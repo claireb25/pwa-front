@@ -108,7 +108,6 @@ $bleuclair: #01717D;
   font-family: "RobotoReg";
   src: url("../assets/fonts/Roboto-Regular.ttf")
 }
-
 .div-contact{
   width: 100vw;
   h1{
@@ -131,7 +130,7 @@ $bleuclair: #01717D;
   
 
   #contact{
-    width : 70%;
+    width : 80%;
     margin: auto;
     font-family: 'RobotoReg';
   

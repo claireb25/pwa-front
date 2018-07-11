@@ -5,7 +5,7 @@
                 <h1>{{pres.nom}}</h1>
                 <h2>Développeuse Web Junior</h2>
                 <p class="description">{{pres.description}}</p>
-                <a class="downloadlink" href="src/assets/Claire_Bourgeois_CV.pdf" download="cv_claire_bourgeois.pdf">Téléchargez mon CV <sup>PDF</sup></a>
+                <a class="downloadlink" v-bind:href=" `${pres.cv}` " download="CV_Claire_Bourgeois" target="_blank">Téléchargez mon CV <sup>PDF</sup></a>
             </div>
         </div>
         <div class="nav">
@@ -58,7 +58,7 @@ $bleuclair: #01717D;
         margin: auto;
         font-size: 14px;
         h1{
-            margin-bottom: 0;
+            margin: 25px auto 0 auto ;
             font-size: 20px;
             
         }
@@ -68,7 +68,7 @@ $bleuclair: #01717D;
             margin: 0;
         }
         .description{
-            font-size: 12px;
+            font-size: 14px;
         }
         .downloadlink{
             text-decoration: none;
