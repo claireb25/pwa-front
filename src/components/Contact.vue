@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="div-contact">
+      <div class="triangle"></div>
+      <h1>Contactez moi</h1>
       <div id="contact">
-        <div class="triangle">
-          <h1>Contactez moi</h1>
-        </div>
+        
         <p class="acceuil-contact">{{ msg }}</p>
         <a class="link-email" href="mailto:claire.bourgeois.cb@gmail.com">
           <div class="email" v-bind:key="pres" v-for="pres in presentation"> 
@@ -64,7 +64,7 @@
 </g>
 </svg>
 
-</router-link>
+          </router-link>
           <router-link class="navlink" to="/Projets">Projets</router-link>
           <router-link class="navlink" to="/CV">CV</router-link>
           <router-link class="navlink" to="/Blog">Blog</router-link>
@@ -109,84 +109,99 @@ $bleuclair: #01717D;
   src: url("../assets/fonts/Roboto-Regular.ttf")
 }
 
-#contact{
-  width : 70vw;
-  margin: auto;
-  font-family: 'RobotoReg';
+.div-contact{
+  width: 100vw;
   h1{
-    font-size: 18px;
+    font-family: 'RobotoReg';
+    font-size: 20px;
     text-transform: uppercase;
+    position : absolute;
+    top : 10px;
+    left: 48px;
   }
   .triangle {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 102px 100px 0 77px;
+    border-width: 75px 80px 0 47px;
     border-color: #dea90f transparent transparent transparent;
-    height: 100px;
+      transform: rotate(-2deg);
+    margin-bottom: 40px;
   }
-  .acceuil-contact{
-    font-size: 14px;
-  }
-  .link-email{
-    text-decoration: none;
-    color:$bleuclair;
-    .email{
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-  }
-  form{
-    display: flex;
-    flex-direction: column;
   
+
+  #contact{
+    width : 70%;
     margin: auto;
-    input,textarea{
-      resize: none;
-      color: $bleuclair;
-      border-top: none;
-      border-left: none;
-      border-right:none;
-      border-bottom: 1px solid $bleuclair;
-      margin : 14px 0;
-      padding: 6px 0;
+    font-family: 'RobotoReg';
+  
+    .acceuil-contact{
       font-size: 14px;
     }
-    input[type="submit"]{
-      border: $bleuclair 1px solid;
-      background-color: transparent;
-      color: $bleuclair;
-      text-transform: uppercase;
-      width: 100px;
-      height: 30px;
-      align-content: right;
-      align-self: right;
-      margin: 15px 0 40px 0;
+    .link-email{
+      text-decoration: none;
+      color:$bleuclair;
+      .email{
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      input,textarea{
+        resize: none;
+        color: $bleuclair;
+        border-top: none;
+        border-left: none;
+        border-right:none;
+        border-bottom: 1px solid $bleuclair;
+        margin : 14px 0;
+        padding: 6px 0;
+        font-size: 14px;
+      }
+      input[type="submit"]{
+        border: $bleuclair 1px solid;
+        background-color: transparent;
+        color: $bleuclair;
+        text-transform: uppercase;
+        width: 100px;
+        height: 30px;
+        align-content: right;
+        align-self: right;
+        margin: 15px 0 70px 0;
+        cursor: pointer;
+      }
     }
   }
-}
-.nav{
-  font-family: 'RobotoReg';
-  display: flex;
-  justify-content: space-around;
-  font-size: 12px;
-  text-transform: uppercase;
-  border-top: $bleuclair 1px solid;
-  line-height: 40px;
-  height :40px;
-  .router-link-active{
-    color: #01717D;
-  }
-  .navlink{
-    text-decoration: none;
-    color: black;
-    padding: 0 5px;
-    svg{
-      width: 19px;
-      height: auto;
-      padding-top: 10px;
+  .nav{
+    font-family: 'RobotoReg';
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-top: $bleuclair 1px solid;
+    line-height: 40px;
+    height :40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .router-link-active{
+      color: #01717D;
     }
-  }
+    .navlink{
+      text-decoration: none;
+      color: black;
+      svg{
+        width: 19px;
+        height: auto;
+        padding-top: 10px;
+      }
+    }
+  } 
 }
+
 
 </style>
