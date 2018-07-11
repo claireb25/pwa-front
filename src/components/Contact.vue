@@ -175,6 +175,8 @@ $bleuclair: #01717D;
       }
       input::placeholder, textarea::placeholder{
         color : $bleuclair;
+        font-family: "RobotoReg";
+        font-size: 14px;
       }
     }
   }
