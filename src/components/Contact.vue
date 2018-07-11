@@ -1,7 +1,9 @@
 <template>
     <div>
       <div id="contact">
-        <h1>Contactez moi</h1>
+        <div class="triangle">
+          <h1>Contactez moi</h1>
+        </div>
         <p class="acceuil-contact">{{ msg }}</p>
         <a class="link-email" href="mailto:claire.bourgeois.cb@gmail.com">
           <div class="email" v-bind:key="pres" v-for="pres in presentation"> 
@@ -17,7 +19,52 @@
         </form>
       </div>
       <div class="nav">
-          <router-link class="navlink" to="/">Accueil</router-link>
+          <router-link class="navlink" to="/"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="612.008px" height="612.008px" viewBox="0 0 612.008 612.008" style="enable-background:new 0 0 612.008 612.008;"
+	 xml:space="preserve">
+<g>
+	<g id="Shape_379_1_">
+		<g>
+			<path d="M609.208,298.575L313.306,3.815c-3.987-3.988-10.445-3.988-14.433,0L2.961,298.575c-3.988,3.988-3.907,10.353,0,14.393
+				c1.999,2.06,4.61,3.11,7.201,3.131v0.041h71.441v284.865c0,2.815,1.142,5.335,2.988,7.171c1.846,1.856,4.396,3.009,7.211,3.009
+				h142.8c5.63,0,10.2-4.569,10.2-10.18V397.556h122.401v203.449c0,5.6,4.569,10.18,10.2,10.18h142.8c5.63,0,10.2-4.569,10.2-10.18
+				V316.14h71.899c2.673,0.051,5.191-1,6.905-3.162C612.676,308.541,613.197,302.563,609.208,298.575z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+</router-link>
           <router-link class="navlink" to="/Projets">Projets</router-link>
           <router-link class="navlink" to="/CV">CV</router-link>
           <router-link class="navlink" to="/Blog">Blog</router-link>
@@ -59,15 +106,24 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("/assets/fonts/Roboto-Regular.ttf") format("True Type Fonts"),
+  src: url("../assets/fonts/Roboto-Regular.ttf")
 }
 
 #contact{
   width : 70vw;
   margin: auto;
+  font-family: 'RobotoReg';
   h1{
     font-size: 18px;
     text-transform: uppercase;
+  }
+  .triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 102px 100px 0 77px;
+    border-color: #dea90f transparent transparent transparent;
+    height: 100px;
   }
   .acceuil-contact{
     font-size: 14px;
@@ -77,6 +133,7 @@ $bleuclair: #01717D;
     color:$bleuclair;
     .email{
       font-size: 14px;
+      margin-bottom: 20px;
     }
   }
   form{
@@ -96,7 +153,7 @@ $bleuclair: #01717D;
       font-size: 14px;
     }
     input[type="submit"]{
-      border: $bleuclair 2px solid;
+      border: $bleuclair 1px solid;
       background-color: transparent;
       color: $bleuclair;
       text-transform: uppercase;
@@ -104,21 +161,31 @@ $bleuclair: #01717D;
       height: 30px;
       align-content: right;
       align-self: right;
-      margin: 15px 0;
+      margin: 15px 0 40px 0;
     }
   }
 }
 .nav{
+  font-family: 'RobotoReg';
   display: flex;
   justify-content: space-around;
   font-size: 12px;
   text-transform: uppercase;
   border-top: $bleuclair 1px solid;
-  height: 40px;
   line-height: 40px;
+  height :40px;
+  .router-link-active{
+    color: #01717D;
+  }
   .navlink{
     text-decoration: none;
     color: black;
+    padding: 0 5px;
+    svg{
+      width: 19px;
+      height: auto;
+      padding-top: 10px;
+    }
   }
 }
 

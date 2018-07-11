@@ -19,7 +19,7 @@
       <router-link class="navlink" to="/CV">CV</router-link>
       <router-link class="navlink" to="/Blog">Blog</router-link>
       <router-link class="navlink" to="/Contact">Contact</router-link>
-    </div>
+  </div>
 </div>
 </template>
 
@@ -73,7 +73,25 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style lang="scss" scoped>
+$bleuclair: #01717D;
+@font-face{
+  font-family: "RobotoReg";
+  src: url("../assets/fonts/Roboto-Regular.ttf")
+}
+.nav{
+  font-family: 'RobotoReg';
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-top: $bleuclair 1px solid;
+  height: 40px;
+  line-height: 40px;
+  .navlink{
+    text-decoration: none;
+    color: black;
+  }
+}
 </style>
+
