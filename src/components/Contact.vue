@@ -173,6 +173,9 @@ $bleuclair: #01717D;
         margin: 15px 0 70px 0;
         cursor: pointer;
       }
+      input::placeholder, textarea::placeholder{
+        color : $bleuclair;
+      }
     }
   }
   .nav{
