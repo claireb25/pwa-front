@@ -1,8 +1,12 @@
 <template>
     <div id="home">
-        <h1>Portfolio</h1>
-        {{ msg }}
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <div v-bind:key="pres" v-for="pres in presentation"> 
+            <h1>{{pres.nom}}</h1>
+            <h2>Développeuse Web Junior</h2>
+            <p>{{pres.description}}</p>
+            <a class="downloadlink" href="src/assets/Claire_Bourgeois_CV.pdf" download="cv_claire_bourgeois.pdf">Téléchargez mon CV <sup>PDF</sup></a>
+        </div>
+      
         <div class="nav">
             <router-link class="navlink" to="/Projets">Projets</router-link>
             <router-link class="navlink" to="/CV">CV</router-link>
@@ -18,20 +22,44 @@ export default {
     name: 'Home',
     data () {
         return{
-            msg: "Claire Bourgeois"
+            presentation:{}
         }
+    },
+    methods: {
+        fetchPresentation() {
+            let self = this
+            fetch('http://localhost:3000/presentation')
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(presentation){
+            console.log(presentation)
+            self.presentation = presentation
+            })
+        },
+    },
+    created: function(){
+        this.fetchPresentation()
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    .downloadlink{
+        text-decoration: none;
+        text-transform: uppercase;
+        sup{
+            font-size: 10px;
+        }
+    }
     .nav{
         display: flex;
         flex-direction: column;
+        .navlink{
+            height:80px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
     }
-    .navlink{
-        height:80px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
+    
 </style>
