@@ -192,7 +192,7 @@ $bleuclair: #01717D;
     position: fixed;
     bottom: 0;
     width: 100%;
-    .router-link-active{
+    .nav .navlink[data-v-004bdd03], .router-link-exact-active[data-v-004bdd03]{
       color: #01717D;
     }
     .navlink{

@@ -3,7 +3,9 @@
   <div class="triangle"></div>
   <h1>Mon CV</h1>
   <div class="contenu-cv">
-    <a class="downloadlink" href="" download="Claire_Bourgeois_CV.pdf">Téléchargez mon CV <sup>PDF</sup></a>
+     <div v-bind:key="pres" v-for="pres in presentation">
+    <a class="downloadlink" v-bind:href=" `${pres.cv}` " download="CV_Claire_Bourgeois" target="_blank">Téléchargez mon CV <sup>PDF</sup></a>
+    </div>
     <h2>Compétences</h2>
     <div class="competences">
       <div v-bind:key="skill" v-for="skill in skills">
@@ -103,7 +105,8 @@ export default {
     return {
       skills:{},
       experiences:{},
-      formations:{}
+      formations:{},
+      presentation:{}
     }
   },
   methods:{
@@ -137,11 +140,23 @@ export default {
           self.formations= formations
         })
     },
+    fetchPresentation() {
+            let self = this
+            fetch('http://localhost:3000/presentation')
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(presentation){
+            console.log(presentation)
+            self.presentation = presentation
+            })
+      },
   },
   created: function(){
     this.fetchExperience()
     this.fetchSkills()
     this.fetchFormations()
+    this.fetchPresentation()
   }
 }
 </script>
@@ -245,7 +260,7 @@ $bleuclair: #01717D;
       position: fixed;
       bottom: 0;
       width: 100%;
-      .router-link-active{
+      .div-contact .nav .navlink[data-v-cf6573c0], .router-link-active[data-v-cf6573c0]{
         color: #01717D;
       }
       .navlink{
