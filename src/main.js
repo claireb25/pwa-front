@@ -19,7 +19,7 @@ const routes = [
   {path: '/Contact', component:Contact},
   {path: '/Blog', component:Blog},
   {path: '/CV', component:CV},
-  {path: '/Projet/([0-9]+)', component:Projet},
+  {path: '/Projet/:id', component:Projet},
   {path: '/Projets', component:Projets}
 ]
 

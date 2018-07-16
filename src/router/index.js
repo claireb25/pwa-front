@@ -5,6 +5,7 @@ import CV from '@/components/CV'
 import Projets from '@/components/Projets'
 import Blog from '@/components/Blog'
 import Contact from '@/components/Contact'
+import Projet from '@/components/Projet'
 Vue.use(Router)
 
 export default new Router({
@@ -18,6 +19,11 @@ export default new Router({
       path: '/projets',
       name: 'Projets',
       component: Projets
+    },
+    {
+      path: '/projets/:id',
+      name: 'Projet',
+      component: Projet
     },
     {
       path: '/cv',

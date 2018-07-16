@@ -2,14 +2,20 @@
     <div id="div-projets">
         <div class="triangle"></div>
         <h1>Mes projets</h1>
-        <div class="mesprojets">
-            <div v-bind:key="projet" v-for="projet in projets">
-                <h2>{{projet.titre}}</h2>
-                <p>{{projet.lieu}}</p>
-                <img src="" alt="img_projet" width="100" height="100">
+            <div class="margin-bottom">
+                <div v-bind:key="projet" v-for="projet in projets">
+                    <router-link v-bind:to="`/Projet/${projet.id}`">
+                        <div class="mesprojets">
+                            <img class="image-projet" src="../assets/testfondprojet.jpg" alt="" width="250" height="250">
+                            <div class="content-projets">
+                                <h2>{{projet.titre}}</h2>
+                                <p>{{projet.lieu}}</p>
+                            </div>
+                        </div>
+                    </router-link>
+                </div>
             </div>
-        </div>
-       <div class="nav">
+            <div class="nav">
       <router-link class="navlink" to="/">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
           y="0px" width="612.008px" height="612.008px" viewBox="0 0 612.008 612.008" style="enable-background:new 0 0 612.008 612.008;"
@@ -72,8 +78,8 @@ $bleuclair: #01717D;
 #div-projets{
     width: 100vw;
     margin: 0;
+    font-family: 'RobotoReg';
     h1{
-        font-family: 'RobotoReg';
         font-size: 20px;
         text-transform: uppercase;
         position : absolute;
@@ -91,6 +97,32 @@ $bleuclair: #01717D;
         margin-bottom: 40px;
         padding:0;
     }
+    .margin-bottom{
+        margin-bottom: 70px;
+        .mesprojets{
+        width: 250px;
+        height: 250px;
+        position: relative;
+        margin: 30px auto;
+        .image-projet{
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+            0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+        .content-projets{
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.508);
+            color: white;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+    }
+    
     .nav{
       font-family: 'RobotoReg';
       background-color: white;
