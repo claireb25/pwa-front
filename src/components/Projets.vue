@@ -10,6 +10,7 @@
                             <div class="content-projets">
                                 <h2>{{projet.titre}}</h2>
                                 <p>{{projet.lieu}}</p>
+                                <!-- <p class="annee">{{projet.annee}}</p> -->
                             </div>
                         </div>
                     </router-link>
@@ -120,6 +121,9 @@ $bleuclair: #01717D;
             flex-direction: column;
             justify-content: center;
             text-align: center;
+            .annee{
+                margin :0;
+            }
         }
     }
     }

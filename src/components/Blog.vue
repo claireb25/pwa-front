@@ -3,13 +3,17 @@
     <div class="triangle"></div>
     <div class="content-articles">
       <h1>Mes articles</h1>
+      
       <div class="one-article" v-bind:key="post" v-for="post in coucou" v-if="post.author == 5">
         <!-- <a v-if="post.featured_media" :href="post.link">
 						<img :src="post.featured_media.source_url" />
+
 					</a> -->
+         
         <h2 class="post-title" v-html="post.title.rendered"></h2>
         <div class="post-excerpt" v-if="post.excerpt.rendered" v-html="post.excerpt.rendered"></div>
-        	<a class="button read-more" :href="post.link" target="_blank">+ sur le blog</a>
+        	<!-- <a class="button read-more" :href="post.link" target="_blank">+ sur le blog</a> -->
+          <router-link  class="read-more" v-bind:to="`/Article/${post.id}`">en savoir plus</router-link>
       </div>
       </div>
     <div class="nav">
@@ -119,7 +123,7 @@
           display: flex;
           // border: #01717D 1px solid;
           background : $bleuclair;
-          width: 35%;
+          width: 36%;
           text-align: center;
           padding: 8px;
           margin:  auto;

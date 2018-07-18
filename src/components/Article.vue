@@ -1,22 +1,14 @@
 <template>
-  <div id="div-projet">
+  <div id="div-article">
     <div class="triangle"></div>
-     <div class="contenu-projet">
-         <!-- {{proj.id}} -->
-        <h1>{{projet.titre}}</h1>
-        <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="">
-        <p>réalisé en {{ projet.annee }} pour {{ projet.lieu }}</p>
-    
-        <div> {{ projet.description}}</div>
-        
-
-        <h2>Compétences</h2>
-        
-          <div>{{projet.skills}}</div>
-
-        <a :href="`${ projet.lien }`" target="_blank"><p class="decouvrir" >Découvrir le projet </p></a>
-        <a :href="`${ projet.git }`" target="_blank"> <p class="decouvrir" >Le code sur github </p></a>
-    </div>
+     <div class="contenu-article">
+          <h1 class="post-title" v-html="article.title.rendered"></h1>
+          <div class="content-article" v-html="article.content.rendered"></div>
+           <!-- <div class="one-article" v-bind:key="art" v-for="art in article">
+               {{art}}
+            <h2 class="post-title" v-html="art.title.rendered"></h2>
+            </div> -->
+       </div>
     <div class="nav">
       <router-link class="navlink" to="/">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -46,35 +38,36 @@
 </template>
 <script>
   export default {
-    name: 'Projet',
+    name: 'Article',
     data() {
       return {
-        projet:{},
-        
+        postsUrl: 'http://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts/',
+        article:[],
+   
       }
     },
     props:['id'],
     methods:{
-        fetchProjet(id) {
+      getArticle(id) {
             let self = this
-            fetch('http://localhost:3000/projets/'+id)
-            .then(function(response){
+            fetch(this.postsUrl+id)
+              .then(function(response){
                 return response.json()
             })
-            .then(function(projet){
-            console.log(projet)
-            
-            self.projet = projet
+            .then(function(result){
+            console.log(result)
+            self.article = result
             })
-      },
+        },
     },
-    created: function(){
-    this.id = this.$route.params.id
-    this.fetchProjet(this.id)
-   
-    console.log(this.id)
-  }
-   
+    created(){
+        this.id = this.$route.params.id
+        console.log(this.id)
+      this.getArticle(this.id);
+    },
+
+    // props:['id'],
+ 
   }
 </script>
 
@@ -86,7 +79,7 @@
     src: url("../assets/fonts/Roboto-Regular.ttf")
   }
 
-  #div-projet {
+  #div-article {
     width: 100vw;
     margin: 0;
     font-family: 'RobotoReg';
@@ -108,27 +101,6 @@
       transform-origin: 50% 50%;
       margin-bottom: 40px;
       padding: 0;
-    }
-    .contenu-projet{
-      width:80%;
-      margin: auto auto 80px auto;
-      font-size: 12px;
-      .image-projet{
-        width: 100%;
-      }
-      a{
-         text-decoration: none;
-          text-transform: uppercase;
-          color: black;
-          display: block;
-        .decouvrir{
-          border: #01717D 1px solid;
-          width: 60%;
-          text-align: center;
-          padding: 8px;
-          margin: 15px auto;
-        }
-      }
     }
     .nav{
       font-family: 'RobotoReg';

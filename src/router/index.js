@@ -6,6 +6,7 @@ import Projets from '@/components/Projets'
 import Blog from '@/components/Blog'
 import Contact from '@/components/Contact'
 import Projet from '@/components/Projet'
+import Article from '@/components/Article'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,11 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/article/:id',
+      name: 'Article',
+      component: Article
     },
     {
       path: '/contact',

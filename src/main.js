@@ -9,6 +9,7 @@ import Blog from './components/Blog'
 import CV from './components/CV'
 import Projet from './components/Projet'
 import Projets from './components/Projets'
+import Article from './components/Article'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -20,7 +21,8 @@ const routes = [
   {path: '/Blog', component:Blog},
   {path: '/CV', component:CV},
   {path: '/Projet/:id', component:Projet},
-  {path: '/Projets', component:Projets}
+  {path: '/Projets', component:Projets},
+  {path: '/Article/:id', component:Article}
 ]
 
 export const globalStore = new Vue({
