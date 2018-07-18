@@ -11,10 +11,10 @@
 
         <h2>Compétences</h2>
         
-          <li>{{projet.skills}}</li>
+          <div>{{projet.skills}}</div>
 
-        <p><a :href="`${ projet.lien }`">Découvrir le projet </a></p>
-        <p><a :href="`${ projet.lien }`"> Découvrir le code du projet </a></p>
+        <a :href="`${ projet.lien }`"><p class="decouvrir">Découvrir le projet </p></a>
+        <a :href="`${ projet.lien }`"> <p class="decouvrir">Le code sur github </p></a>
     </div>
     <div class="nav">
       <router-link class="navlink" to="/">
@@ -88,6 +88,7 @@
   #div-projet {
     width: 100vw;
     margin: 0;
+    font-family: 'RobotoReg';
     h1 {
       font-family: 'RobotoReg';
       font-size: 20px;
@@ -111,6 +112,19 @@
       width:80%;
       margin: auto;
       font-size: 12px;
+      a{
+         text-decoration: none;
+          text-transform: uppercase;
+          color: black;
+          display: block;
+        .decouvrir{
+          border: #01717D 1px solid;
+          width: 60%;
+          text-align: center;
+          padding: 8px;
+          margin: 15px auto;
+        }
+      }
     }
     .nav{
       font-family: 'RobotoReg';

@@ -6,7 +6,7 @@
                 <div v-bind:key="projet" v-for="projet in projets">
                     <router-link v-bind:to="`/Projet/${projet.id}`">
                         <div class="mesprojets">
-                            <img class="image-projet" src="../assets/testfondprojet.jpg" alt="" width="250" height="250">
+                            <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="" width="250" height="250">
                             <div class="content-projets">
                                 <h2>{{projet.titre}}</h2>
                                 <p>{{projet.lieu}}</p>
@@ -107,6 +107,7 @@ $bleuclair: #01717D;
         .image-projet{
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
             0 1px 2px rgba(0, 0, 0, 0.24);
+        
         }
         .content-projets{
             position: absolute;

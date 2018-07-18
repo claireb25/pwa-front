@@ -1,7 +1,17 @@
 <template>
   <div id="div-blog">
     <div class="triangle"></div>
-    <h1>Mes articles</h1>
+    <div class="content-articles">
+      <h1>Mes articles</h1>
+      <div class="one-article" v-bind:key="post" v-for="post in coucou" v-if="post.author == 5">
+        <!-- <a v-if="post.featured_media" :href="post.link">
+						<img :src="post.featured_media.source_url" />
+					</a> -->
+        <h2 class="post-title" v-html="post.title.rendered"></h2>
+        <div class="post-excerpt" v-if="post.excerpt.rendered" v-html="post.excerpt.rendered"></div>
+        	<a class="button read-more" :href="post.link" target="_blank">+ sur le blog</a>
+      </div>
+      </div>
     <div class="nav">
       <router-link class="navlink" to="/">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -32,12 +42,32 @@
 
 <script>
   export default {
+    
     name: 'Blog',
     data() {
       return {
-        msg: "coucou vue Blog"
+        postsUrl: 'http://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts',
+        coucou:[],
+   
       }
-    }
+    },
+    methods:{
+      getPosts() {
+            let self = this
+            fetch(this.postsUrl, {params:this.postsData})
+              .then(function(response){
+                return response.json()
+            })
+            .then(function(result){
+            console.log(result)
+            self.coucou = result
+            })
+        },
+    },
+    created(){
+      this.getPosts();
+    },
+    
   }
 </script>
 
@@ -52,6 +82,7 @@
   #div-blog {
     width: 100vw;
     margin: 0;
+    font-family: "RobotoReg";
     h1 {
       font-family: 'RobotoReg';
       font-size: 20px;
@@ -70,6 +101,34 @@
       transform-origin: 50% 50%;
       margin-bottom: 40px;
       padding: 0;
+    }
+    .content-articles{
+      width: 80%;
+      margin: 0 auto 80px;
+      .one-article{
+        border-top:rgb(179, 179, 179) 1px solid;
+        margin: 20px 0;
+        padding: 10px 20px;
+        .post-title{
+          font-size: 14px
+        }
+        .post-excerpt{
+          font-size: 12px;
+        }
+        .read-more{
+          display: flex;
+          // border: #01717D 1px solid;
+          background : $bleuclair;
+          width: 35%;
+          text-align: center;
+          padding: 8px;
+          margin:  auto;
+          text-decoration: none;
+          text-transform: uppercase;
+          color: white;
+          font-size: 12px;
+        }
+      }
     }
     .nav {
       font-family: 'RobotoReg';

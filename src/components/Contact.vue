@@ -10,14 +10,97 @@
             {{pres.email}}
           </div>
         </a>
-        <form>
+
+        <form class="form" @submit.prevent="onSubmit" method="post" action="">
+          <div class="input">
+             <label for="lastName"></label>
+            <input type="text" id="lastName" v-model.trim="lastName"  placeholder="Nom">
+            <!-- <div v-if="$v.lastName.$dirty">
+               <p class="error-message" v-if="!$v.lastName.required">Un nom est obligatoire.</p>
+             </div> -->
+          </div>
+        </form>
+
+        <!-- <form class="form" @submit.prevent="onSubmit" method="post" action="">
+          <div class="input">
+            <label for="lastName"></label>
+             <input :class="{ error: $v.lastName.$error}" type="text" id="lastName" v-model.trim="lastName" @input="$v.lastName.$touch()" placeholder="Votre nom">
+             <div v-if="$v.lastName.$dirty">
+               <p class="error-message" v-if="!$v.lastName.required">Un nom est obligatoire.</p>
+             </div>
+              </div>
+              <div class="input">
+                <label for="firstName"></label>
+                <input :class="{ error: $v.firstName.$error }" type="text" id="firstName" v-model.trim="firstName" @input="$v.firstName.$touch()" placeholder="Votre prénom">
+                <div v-if="$v.firstName.$dirty">
+                  <p class="error-message" v-if="!$v.firstName.required">Un prénom est obligatoire.</p>
+                </div>
+              </div>
+                <div class="input">
+                <label for="email"></label>
+                <input :class="{ error: $v.email.$error }" type="text" id="email" v-model.trim="email" placeholder="Votre adresse mail">
+                <div v-if="$v.email.$dirty">
+                  <p class="error-message" v-if="!$v.email.required">Une adresse mail est obligatoire.</p>
+                  <p class="error-message" v-if="!$v.email.email">Entrer une adresse mail valide !</p>
+                </div>
+              </div>
+              <div class="input">
+                <label for="message"></label>
+                <textarea :class="{ error: $v.message.$error }" type="textarea" id="message" v-model.trim="message" @input="$v.message.$touch()" placeholder="Votre message"></textarea>
+                <div v-if="$v.message.$dirty">
+                  <p class="error-message" v-if="!$v.message.required">Un message est obligatoire.</p>
+                </div>
+              </div>
+              <button class="btn" type="submit" @click="validate"><span class="center">Envoyer</span></button>
+          </form>
+ -->
+
+        <!-- <form class="form" @submit.prevent="onSubmit">
+        <div class="input">
+        <input :class="{ error: $v.lastName.$error}"
+        type="text" 
+        id="lastName" 
+        placeholder="Nom"
+        v-model.trim="lastName">
+        <div v-if="$v.lastName.$dirty">
+          <p class="error-message" v-if="!$v.lastName.required">Last Name 
+          must not be empty.</p>
+        </div>
+      </div>
+      <div class="input"> 
+        <input 
+        type="text"
+        id="firstName"
+        placeholder="Prénom" 
+        v-model.trim="firstName">
+      </div>
+     
+       <div class="input">
+        <input :class="{ error: $v.email.$error }"
+        type="email" 
+        id="e-mail" 
+        placeholder="contact@me.com"
+        v-model.trim="email">
+
+         <div v-if="$v.email.$dirty">
+          <p class="error-message" v-if="!$v.email.email">Please enter a 
+          valid email address.</p>
+          <p class="error-message" v-if="!$v.email.required">Email must not 
+          be empty.</p>
+        </div>
+      </div>
+      <button type="submit" @click="validate">Submit</button>
+    </form> -->
+
+     
+        <!-- <div id="form">
           <input type="text" name="nom" id="name" placeholder="Nom">
-          <input type="text" name="prenom" id="firstname" placeholder="Prénom">
-          <input type="text" name="email" id="e-mail" placeholder="contact@me.com">
+          <input type="text" name="prenom" id="firstname"  placeholder="Prénom">
+          <input type="email" name="email" id="e-mail"  placeholder="contact@me.com">
           <textarea name="message" id="mymessage" cols="30" rows="8" placeholder="Message"></textarea>
           <input type="submit" value="Envoyer">
-        </form>
-      </div>
+        </div>-->
+      </div> 
       <div class="nav">
           <router-link class="navlink" to="/"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="612.008px" height="612.008px" viewBox="0 0 612.008 612.008" style="enable-background:new 0 0 612.008 612.008;"
@@ -74,12 +157,23 @@
 </template>
 
 <script>
+// import Vue from 'vue'
+// import Vuelidate from 'vuelidate'
+// Vue.use(Vuelidate)
+import Vuelidate from 'vuelidate'
+import { required, email } from 'vuelidate/lib/validators'
 export default {
   name: 'Contact',
   data () {
     return {
       presentation:{},
-      msg: "Lorem ipsum dolor sita amet et delectus accommodare his consul."
+      msg: "Lorem ipsum dolor sita amet et delectus accommodare his consul.",
+      form: {
+        lastName: '',
+        firstName: '',
+        email: '',
+        message: ''
+      },
     }
   },
   methods: {
@@ -94,7 +188,43 @@ export default {
             self.presentation = presentation
             })
         },
+          validate () {
+            console.log('hihi')
+            this.$v.$touch() // it will validate all fields
+            if (!this.$v.$invalid) { // invalid, becomes true when a validations return false
+            //  you dont have validation error.So do what u want to do here
+              console.log(this.lastName)
+            }
+          },
+          onSubmit () {
+            console.log('submit!')
+            this.$v.$touch()
+            if (this.$v.$invalid) {
+              this.submitStatus = 'ERROR'
+            } else {
+              // do your submit logic here
+              this.submitStatus = 'PENDING'
+              setTimeout(() => {
+                this.submitStatus = 'OK'
+              }, 500)
+            }
+          }
+  },
+  validations: {
+    lastName: {
+      required
     },
+    firstName: {
+      required
+    },
+    email: {
+      required,
+      email
+    },
+    message: {
+      required
+    }
+  },
     created: function(){
         this.fetchPresentation()
     }
@@ -149,7 +279,8 @@ $bleuclair: #01717D;
       display: flex;
       flex-direction: column;
       margin: auto;
-      input,textarea{
+      .input{
+   input,textarea{
         resize: none;
         color: $bleuclair;
         border-top: none;
@@ -178,6 +309,8 @@ $bleuclair: #01717D;
         font-size: 14px;
       }
     }
+      }
+   
   }
   .nav{
     font-family: 'RobotoReg';
