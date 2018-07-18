@@ -4,7 +4,7 @@
      <div class="contenu-projet">
          <!-- {{proj.id}} -->
         <h1>{{projet.titre}}</h1>
-        <img>
+        <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="">
         <p>réalisé en {{ projet.annee }} pour {{ projet.lieu }}</p>
         <div> {{ projet.description}}</div>
         
@@ -13,8 +13,8 @@
         
           <div>{{projet.skills}}</div>
 
-        <a :href="`${ projet.lien }`"><p class="decouvrir">Découvrir le projet </p></a>
-        <a :href="`${ projet.lien }`"> <p class="decouvrir">Le code sur github </p></a>
+        <a :href="`${ projet.lien }`" target="_blank"><p class="decouvrir" >Découvrir le projet </p></a>
+        <a :href="`${ projet.git }`" target="_blank"> <p class="decouvrir">Le code sur github </p></a>
     </div>
     <div class="nav">
       <router-link class="navlink" to="/">
@@ -110,8 +110,11 @@
     }
     .contenu-projet{
       width:80%;
-      margin: auto;
+      margin: auto auto 80px auto;
       font-size: 12px;
+      .image-projet{
+        width: 100%;
+      }
       a{
          text-decoration: none;
           text-transform: uppercase;
