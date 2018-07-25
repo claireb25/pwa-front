@@ -6,13 +6,18 @@
      <div v-bind:key="pres" v-for="pres in presentation">
     <a class="downloadlink" v-bind:href=" `${pres.cv}` " download="CV_Claire_Bourgeois" target="_blank">Téléchargez mon CV <sup>PDF</sup></a>
     </div>
-    <h2>Compétences</h2>
+    <div class="titre-flex">
+      <p class="triangle3"></p>
+      <h2>Compétences</h2>
+    </div>
     <div class="competences">
       <div v-bind:key="skill" v-for="skill in skills">
       <p class="skill"> {{ skill.skill }}, </p>
       </div>
     </div>
-    <h2>Experiences</h2>
+    <div class="titre-flex">
+    <p class="triangle3"></p>
+    <h2>Experiences</h2></div>
     <div v-bind:key="experience" v-for="experience in experiences">
       <div class="contenu-exp">
         <div class="date">
@@ -27,7 +32,9 @@
       </div>
     </div>
     <div class="formation">
-      <h2>Formation</h2>
+      <div class="titre-flex">
+        <p class="triangle3"></p>
+      <h2>Formation</h2></div>
       <div v-bind:key="formation" v-for="formation in formations">
         <div class="contenu-formation">
           <div class="date">
@@ -165,7 +172,7 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("../assets/fonts/Roboto-Regular.ttf")
+  src: url("/static/fonts/Roboto-Regular.ttf")
 }
 .div-cv{
   width: 100vw;
@@ -186,7 +193,7 @@ $bleuclair: #01717D;
     border-color: #dea90f transparent transparent transparent;
     transform: rotate(-2deg);
     transform-origin: 50% 50%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding:0;
   }
  
@@ -194,19 +201,44 @@ $bleuclair: #01717D;
     width: 80%;
     margin: auto;
     font-size: 12px;
+    div{
+      margin-bottom: 10px;
     .downloadlink{
       text-decoration: none;
       text-transform: uppercase;
       color: black;
+    
       sup{
+        
           font-size:9px;
       }
+    }
     }
     .competences{
       line-height: 25px;
       text-transform: uppercase;
       .skill{
+        margin-top: 0;
+        margin-bottom: 0;
         margin-right: 3px;
+      }
+    }
+    .titre-flex{
+      display:flex;
+      align-items: center;
+      margin:0;
+         .triangle3{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 11px 19px;
+        border-color: transparent transparent transparent #dea90f;
+        margin-right: 10px;
+      }
+      h2{
+        font-size: 16px;
+        padding-bottom: 4px
+        // margin-bottom: 10px;
       }
     }
     .contenu-exp{

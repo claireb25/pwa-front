@@ -2,7 +2,6 @@
   <div id="div-projet">
     <div class="triangle"></div>
      <div class="contenu-projet">
-         <!-- {{proj.id}} -->
         <h1>{{projet.titre}}</h1>
         <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="">
         <p>réalisé en {{ projet.annee }} pour {{ projet.lieu }}</p>
@@ -71,8 +70,6 @@
     created: function(){
     this.id = this.$route.params.id
     this.fetchProjet(this.id)
-   
-    console.log(this.id)
   }
    
   }
@@ -83,7 +80,7 @@
   $bleuclair: #01717D;
   @font-face {
     font-family: "RobotoReg";
-    src: url("../assets/fonts/Roboto-Regular.ttf")
+    src: url("/static/fonts/Roboto-Regular.ttf")
   }
 
   #div-projet {

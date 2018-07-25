@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+
   export default {
     name: 'Article',
     data() {
@@ -76,7 +77,7 @@
   $bleuclair: #01717D;
   @font-face {
     font-family: "RobotoReg";
-    src: url("../assets/fonts/Roboto-Regular.ttf")
+    src: url("/static/fonts/Roboto-Regular.ttf")
   }
 
   #div-article {
@@ -101,6 +102,28 @@
       transform-origin: 50% 50%;
       margin-bottom: 40px;
       padding: 0;
+    }
+    .contenu-article{
+      width:80%;
+      margin: auto auto 80px auto;
+      
+      .content-article /deep/{
+        font-family: "RobotoReg";
+        font-size: 12px;
+      }
+      .content-article /deep/ pre{
+          border: 1px solid black;
+          padding : 5px;
+          color: darkblue;
+          background-color: rgba(187, 187, 187, 0.09);
+          border:1px solid gray;
+          width: 100%;
+          font-size: 10px;
+          white-space:pre-wrap;
+      }
+      .content-article /deep/ img{
+        width:100%;
+      }
     }
     .nav{
       font-family: 'RobotoReg';

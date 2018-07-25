@@ -1,11 +1,16 @@
 <template>
     <div id="home">
+        <div class="triangle"></div>
+        <div class="triangle2"></div>
         <div class="contenu-home">
             <div v-bind:key="pres" v-for="pres in presentation"> 
                 <h1>{{pres.nom}}</h1>
                 <h2>Développeuse Web Junior</h2>
                 <p class="description">{{pres.description}}</p>
+                <div class="dl">
+                <p class="triangle3"></p>
                 <a class="downloadlink" v-bind:href=" `${pres.cv}` " download="CV_Claire_Bourgeois" target="_blank">Téléchargez mon CV <sup>PDF</sup></a>
+                </div>
             </div>
         </div>
         <div class="nav">
@@ -49,14 +54,60 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("../assets/fonts/Roboto-Regular.ttf")
+  src: url("/static/fonts/Roboto-Regular.ttf")
 }
 #home{
+      .triangle {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 189px 200px 180px;
+        border-color:  transparent transparent #dea90f transparent ;
+        transform: rotate(-4deg);
+        transform-origin: 50% 50%;
+        margin-bottom: 40px;
+        position: absolute;
+        padding: 0;
+    }
+    .triangle2{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 75px 190px 75px 0;
+        border-color: transparent rgba(1, 113, 125, 0.289) transparent transparent;
+        right: 0px;
+        position: absolute;
+        top : 150px;
+    }
+    .dl{
+        display: flex;
+        
+        align-items: center;
+        a{
+            margin-bottom: 5px;
+        }
+        .triangle3{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 14px 25px;
+        border-color: transparent transparent transparent #01717D;
+        margin-right: 15px;
+        
+        
+
+    }
+
+    }
+   
     font-family: "RobotoReg";
     .contenu-home{
         width: 80%;
         margin: auto;
         font-size: 14px;
+        position : absolute;
+        top :15px;
+        left: 39px;
         h1{
             margin: 25px auto 0 auto ;
             font-size: 20px;

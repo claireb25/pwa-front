@@ -1,5 +1,12 @@
 <template>
     <div id="div-projets">
+        <!-- <svg class="triangle"
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 64 64'
+            width='64' height='64'
+            fill='currentcolor'>
+            <path d='M72 0 M28 65 L0 4 C72 0 0 4 80 0' />
+        </svg> -->
         <div class="triangle"></div>
         <h1>Mes projets</h1>
             <div class="margin-bottom">
@@ -74,7 +81,7 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("../assets/fonts/Roboto-Regular.ttf")
+  src: url("/static/fonts/Roboto-Regular.ttf")
 }
 #div-projets{
     width: 100vw;
@@ -88,10 +95,13 @@ $bleuclair: #01717D;
         left: 48px;
     }
     .triangle {
+     
+        
+        
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 75px 80px 0 47px;
+         border-width: 75px 80px 0 47px;
         border-color: #dea90f transparent transparent transparent;
         transform: rotate(-2deg);
         transform-origin: 50% 50%;

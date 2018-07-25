@@ -80,7 +80,7 @@
   $bleuclair: #01717D;
   @font-face {
     font-family: "RobotoReg";
-    src: url("../assets/fonts/Roboto-Regular.ttf")
+    src: url("/static/fonts/Roboto-Regular.ttf")
   }
 
   #div-blog {
@@ -121,10 +121,10 @@
         }
         .read-more{
           display: flex;
+          justify-content: center;
           // border: #01717D 1px solid;
           background : $bleuclair;
-          width: 36%;
-          text-align: center;
+          width: 100px;
           padding: 8px;
           margin:  auto;
           text-decoration: none;

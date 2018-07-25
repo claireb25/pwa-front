@@ -10,6 +10,11 @@ import CV from './components/CV'
 import Projet from './components/Projet'
 import Projets from './components/Projets'
 import Article from './components/Article'
+import VuePrism from 'vue-prism'
+import Vuelidate from 'vuelidate'
+Vue.use(VuePrism)
+Vue.use(Vuelidate)
+import 'prismjs/themes/prism.css'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -33,7 +38,7 @@ export const globalStore = new Vue({
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  // mode:'history'
 })
 
 /* eslint-disable no-new */

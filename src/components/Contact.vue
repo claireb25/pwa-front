@@ -12,94 +12,46 @@
         </a>
 
         <form class="form" @submit.prevent="onSubmit" method="post" action="">
-          <div class="input">
+       
              <label for="lastName"></label>
-            <input type="text" id="lastName" v-model.trim="lastName"  placeholder="Nom">
-            <!-- <div v-if="$v.lastName.$dirty">
-               <p class="error-message" v-if="!$v.lastName.required">Un nom est obligatoire.</p>
-             </div> -->
+            <input :class="{ error: $v.lastName.$error}" type="text" id="lastName" v-model.trim="lastName"  placeholder="Nom">
+            <div v-if="$v.lastName.$dirty">
+               <p class="error-message" v-if="!$v.lastName.required">Veuillez entrer votre nom</p>
+          
           </div>
+     
+                <label for="firstName"></label>
+                <input  type="text" id="firstName" v-model.trim="firstName" @input="$v.firstName.$touch()" placeholder="Prénom">
+                <div v-if="$v.firstName.$dirty">
+        
+            </div>
+          
+                <label for="email"></label>
+                <input :class="{ error: $v.email.$error }" type="text" id="email" v-model.trim="email" placeholder="contact@me.com">
+                <div v-if="$v.email.$dirty">
+                  <p class="error-message" v-if="!$v.email.required">Veuillez saisir une adresse e-mail</p>
+                  <p class="error-message" v-if="!$v.email.email">Adresse e-mail non valide</p>
+              
+            </div>
+         
+                <label for="message"></label>
+                <textarea :class="{ error: $v.message.$error }" type="textarea" id="message" v-model.trim="message" @input="$v.message.$touch()" placeholder="Message"></textarea>
+                <div v-if="$v.message.$dirty">
+                  <p class="error-message" v-if="!$v.message.required">Veuillez entrer un message</p>
+                </div>
+           
+               <input class="btn" type="submit" @click="validate"  value="Envoyer">
         </form>
 
-        <!-- <form class="form" @submit.prevent="onSubmit" method="post" action="">
-          <div class="input">
-            <label for="lastName"></label>
-             <input :class="{ error: $v.lastName.$error}" type="text" id="lastName" v-model.trim="lastName" @input="$v.lastName.$touch()" placeholder="Votre nom">
-             <div v-if="$v.lastName.$dirty">
-               <p class="error-message" v-if="!$v.lastName.required">Un nom est obligatoire.</p>
-             </div>
-              </div>
-              <div class="input">
-                <label for="firstName"></label>
-                <input :class="{ error: $v.firstName.$error }" type="text" id="firstName" v-model.trim="firstName" @input="$v.firstName.$touch()" placeholder="Votre prénom">
-                <div v-if="$v.firstName.$dirty">
-                  <p class="error-message" v-if="!$v.firstName.required">Un prénom est obligatoire.</p>
-                </div>
-              </div>
-                <div class="input">
-                <label for="email"></label>
-                <input :class="{ error: $v.email.$error }" type="text" id="email" v-model.trim="email" placeholder="Votre adresse mail">
-                <div v-if="$v.email.$dirty">
-                  <p class="error-message" v-if="!$v.email.required">Une adresse mail est obligatoire.</p>
-                  <p class="error-message" v-if="!$v.email.email">Entrer une adresse mail valide !</p>
-                </div>
-              </div>
-              <div class="input">
-                <label for="message"></label>
-                <textarea :class="{ error: $v.message.$error }" type="textarea" id="message" v-model.trim="message" @input="$v.message.$touch()" placeholder="Votre message"></textarea>
-                <div v-if="$v.message.$dirty">
-                  <p class="error-message" v-if="!$v.message.required">Un message est obligatoire.</p>
-                </div>
-              </div>
-              <button class="btn" type="submit" @click="validate"><span class="center">Envoyer</span></button>
-          </form>
- -->
-
-        <!-- <form class="form" @submit.prevent="onSubmit">
-        <div class="input">
-        <input :class="{ error: $v.lastName.$error}"
-        type="text" 
-        id="lastName" 
-        placeholder="Nom"
-        v-model.trim="lastName">
-        <div v-if="$v.lastName.$dirty">
-          <p class="error-message" v-if="!$v.lastName.required">Last Name 
-          must not be empty.</p>
-        </div>
-      </div>
-      <div class="input"> 
-        <input 
-        type="text"
-        id="firstName"
-        placeholder="Prénom" 
-        v-model.trim="firstName">
-      </div>
-     
-       <div class="input">
-        <input :class="{ error: $v.email.$error }"
-        type="email" 
-        id="e-mail" 
-        placeholder="contact@me.com"
-        v-model.trim="email">
-
-         <div v-if="$v.email.$dirty">
-          <p class="error-message" v-if="!$v.email.email">Please enter a 
-          valid email address.</p>
-          <p class="error-message" v-if="!$v.email.required">Email must not 
-          be empty.</p>
-        </div>
-      </div>
-      <button type="submit" @click="validate">Submit</button>
-    </form> -->
 
      
-        <!-- <div id="form">
-          <input type="text" name="nom" id="name" placeholder="Nom">
-          <input type="text" name="prenom" id="firstname"  placeholder="Prénom">
-          <input type="email" name="email" id="e-mail"  placeholder="contact@me.com">
-          <textarea name="message" id="mymessage" cols="30" rows="8" placeholder="Message"></textarea>
+        <!-- <form id="form">
+          <input type="text" name="lastname" id="lastname" placeholder="Nom">
+          <input type="text" name="firstname" id="firstname"  placeholder="Prénom">
+          <input type="email" name="email" id="email"  placeholder="contact@me.com">
+          <textarea name="message" id="message" cols="30" rows="8" placeholder="Message"></textarea>
           <input type="submit" value="Envoyer">
-        </div>-->
+        </form> -->
       </div> 
       <div class="nav">
           <router-link class="navlink" to="/"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -236,7 +188,7 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("../assets/fonts/Roboto-Regular.ttf")
+  src: url("/static/fonts/Roboto-Regular.ttf")
 }
 .div-contact{
   width: 100vw;
@@ -279,8 +231,8 @@ $bleuclair: #01717D;
       display: flex;
       flex-direction: column;
       margin: auto;
-      .input{
-   input,textarea{
+      // .input{
+        input,textarea{
         resize: none;
         color: $bleuclair;
         border-top: none;
@@ -308,7 +260,12 @@ $bleuclair: #01717D;
         font-family: "RobotoReg";
         font-size: 14px;
       }
-    }
+      .error-message{
+        font-size: 12px;
+        color: red;
+        margin: 0;
+      }
+    // }
       }
    
   }
