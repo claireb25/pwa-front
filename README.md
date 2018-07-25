@@ -1,6 +1,6 @@
 # vue-portfolio-template
 
-> Basic portfolio template
+> Portfolio using Vue.js, with data coming from a rest api and wordpress rest api. 
 
 ## Build Setup
 
