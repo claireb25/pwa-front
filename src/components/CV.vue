@@ -206,8 +206,10 @@ $bleuclair: #01717D;
     .downloadlink{
       text-decoration: none;
       text-transform: uppercase;
-      color: black;
-    
+      color: $bleuclair;
+      font-size: 14px;
+      margin: auto;
+      
       sup{
         
           font-size:9px;

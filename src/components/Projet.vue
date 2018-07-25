@@ -8,10 +8,10 @@
     
         <div> {{ projet.description}}</div>
         
-
-        <h2>Compétences</h2>
+        <div class="titre-flex"><p class="triangle3"></p>
+        <h2>Compétences</h2></div>
         
-          <div>{{projet.skills}}</div>
+          <div class="competences">{{projet.skills}}</div>
 
         <a :href="`${ projet.lien }`" target="_blank"><p class="decouvrir" >Découvrir le projet </p></a>
         <a :href="`${ projet.git }`" target="_blank"> <p class="decouvrir" >Le code sur github </p></a>
@@ -112,6 +112,31 @@
       font-size: 12px;
       .image-projet{
         width: 100%;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+            0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+       .titre-flex{
+      display:flex;
+      align-items: center;
+      margin:0;
+         .triangle3{
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 0 11px 19px;
+        border-color: transparent transparent transparent #dea90f;
+        margin-right: 10px;
+      }
+      h2{
+        font-size: 16px;
+        padding-bottom: 4px;
+        // margin-bottom: 10px;
+      }
+    }
+      div.competences{
+        text-transform: uppercase;
+        margin-bottom: 25px;
+      
       }
       a{
          text-decoration: none;
@@ -124,7 +149,9 @@
           text-align: center;
           padding: 8px;
           margin: 15px auto;
+          
         }
+      
       }
     }
     .nav{

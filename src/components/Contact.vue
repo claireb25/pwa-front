@@ -119,7 +119,7 @@ export default {
   data () {
     return {
       presentation:{},
-      msg: "Lorem ipsum dolor sita amet et delectus accommodare his consul.",
+      msg: "",
       form: {
         lastName: '',
         firstName: '',
@@ -238,21 +238,23 @@ $bleuclair: #01717D;
         border-top: none;
         border-left: none;
         border-right:none;
-        border-bottom: 1px solid $bleuclair;
+        border-bottom: 1px solid black;
         margin : 14px 0;
         padding: 6px 0;
         font-size: 14px;
       }
+      textarea#message{
+        height:100px;
+      }
       input[type="submit"]{
         border: $bleuclair 1px solid;
         background-color: transparent;
-        color: $bleuclair;
+        // color: $bleuclair;
         text-transform: uppercase;
-        width: 100px;
-        height: 30px;
-        align-content: right;
-        align-self: right;
-        margin: 15px 0 70px 0;
+        width: 60%;
+          text-align: center;
+          padding: 8px;
+          margin: 15px auto;
         cursor: pointer;
       }
       input::placeholder, textarea::placeholder{
@@ -264,6 +266,11 @@ $bleuclair: #01717D;
         font-size: 12px;
         color: red;
         margin: 0;
+      }
+      input.btn{
+        margin:20px auto;
+        color: black;
+        
       }
     // }
       }
