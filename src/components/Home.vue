@@ -1,5 +1,8 @@
 <template>
     <div id="home">
+        <!-- <div class="whitebackground">
+            <img class="img" src="static/laptop-2557571_1920.jpg" alt="background"/>
+        </div> -->
         <div class="triangle"></div>
         <div class="triangle2"></div>
         <div class="contenu-home">
@@ -14,7 +17,7 @@
             </div>
         </div>
         <div class="nav">
-            <router-link class="navlink" to="/Projets"><span>Projets</span></router-link>
+            <router-link class="navlink firstlink" to="/Projets"><span>Projets</span></router-link>
             <router-link class="navlink" to="/CV"><span>CV</span></router-link>
             <router-link class="navlink" to="/Blog"><span>Blog</span></router-link>
             <router-link class="navlink linklast" to="/Contact"><span>Contact</span></router-link>
@@ -34,19 +37,19 @@ export default {
     methods: {
         fetchPresentation() {
             let self = this
-            fetch('http://localhost:3000/presentation')
-            .then(function(response){
+            fetch('https://claireb.sadadou.fr/presentation').then(function(response){
                 return response.json()
             })
             .then(function(presentation){
             console.log(presentation)
             self.presentation = presentation
             })
-        },
+        }
     },
     created: function(){
         this.fetchPresentation()
     }
+
 }
 </script>
 
@@ -54,20 +57,32 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("/static/fonts/Roboto-Regular.ttf")
+  src: url("/portfolio/static/fonts/Roboto-Regular.ttf")
 }
+
+
 #home{
+    height: 100vh;
+    // .whitebackground{
+    //     .img {
+    //         background-image:cover;
+    //         transform-origin: 50% 50%;
+    //         height: 100%;
+            
+    //     }
+    // }
       .triangle {
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 0 189px 200px 180px;
+        border-width: 0 189px 169px 170px;
         border-color:  transparent transparent #dea90f transparent ;
         transform: rotate(-4deg);
         transform-origin: 50% 50%;
         margin-bottom: 40px;
         position: absolute;
         padding: 0;
+        top:0;
     }
     .triangle2{
         width: 0;
@@ -77,22 +92,23 @@ $bleuclair: #01717D;
         border-color: transparent rgba(1, 113, 125, 0.289) transparent transparent;
         right: 0px;
         position: absolute;
-        top : 150px;
+        top : 105px;
     }
     .dl{
         display: flex;
-        
         align-items: center;
+        
         a{
             margin-bottom: 5px;
+              font-size: 14px;
         }
         .triangle3{
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 8px 0 14px 25px;
+        border-width: 7px 0 12px 22px;
         border-color: transparent transparent transparent #01717D;
-        margin-right: 15px;
+        margin-right: 10px;
         
         
 
@@ -103,28 +119,31 @@ $bleuclair: #01717D;
     font-family: "RobotoReg";
     .contenu-home{
         width: 80%;
-        margin: auto;
+        margin : 0 auto 200px auto;
         font-size: 14px;
         position : absolute;
         top :15px;
         left: 39px;
         h1{
-            margin: 25px auto 0 auto ;
-            font-size: 20px;
+            margin: 40px auto 0 auto ;
+            font-size: 22px;
             
         }
         h2{
             text-transform: uppercase;
-            font-size: 20px;
-            margin: 0;
+            font-size: 29px;
+            margin-top : 9px;
+            margin-bottom: 0;
         }
-        .description{
-            font-size: 14px;
+        p.description{
+           margin: 25x 0 0 0;
+            font-size: 13px;
         }
         .downloadlink{
             text-decoration: none;
             text-transform: uppercase;
             color: $bleuclair;
+            font-size: 13px;
             sup{
                 font-size:9px;
             }
@@ -132,12 +151,13 @@ $bleuclair: #01717D;
     }
     .nav{
         width: 100%;
-        height: 50%;
+        height: 40%;
         position: fixed;
         bottom:0;
         display: flex;
         flex-direction: column;
         margin-top: 15px;
+        background-color: white;
         .navlink{
             display: flex;
             border-top: 1px solid black;
@@ -145,12 +165,16 @@ $bleuclair: #01717D;
             text-decoration: none;
             text-transform: uppercase;
             color: black;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
-            0 1px 2px rgba(0, 0, 0, 0.24);
+            
+       
             span{
                 margin: auto 39px ;
             }
         }
+        // .firstlink::shadow{
+        //     border: 0 1px 3px rgba(0, 0, 0, 0.12),
+        //     0 1px 2px rgba(0, 0, 0, 0.24);
+        // }
       
     }
 }

@@ -30,15 +30,11 @@ const routes = [
   {path: '/Article/:id', component:Article}
 ]
 
-export const globalStore = new Vue({
-  data: {
-    baseUrl: 'http://localhost/vue-portfolio-template/'
-  }
-})
 
 const router = new VueRouter({
   routes,
-  // mode:'history'
+  base: "/portfolio/",
+  mode:'history'
 })
 
 /* eslint-disable no-new */
@@ -49,4 +45,15 @@ new Vue({
   template: '<App/>'
 })
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
 

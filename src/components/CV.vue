@@ -119,7 +119,7 @@ export default {
   methods:{
     fetchExperience() {
         let self = this
-        fetch('http://localhost:3000/experiences').then(function(response){
+        fetch('https://claireb.sadadou.fr/experiences').then(function(response){
             return response.json()
         })
         .then(function(experiences){
@@ -129,7 +129,7 @@ export default {
     },
     fetchSkills() {
         let self = this
-        fetch('http://localhost:3000/competences').then(function(response){
+        fetch('https://claireb.sadadou.fr/competences').then(function(response){
             return response.json()
         })
         .then(function(skills){
@@ -139,7 +139,7 @@ export default {
     },
     fetchFormations() {
         let self = this
-        fetch('http://localhost:3000/formations').then(function(response){
+        fetch('https://claireb.sadadou.fr/formations').then(function(response){
             return response.json()
         })
         .then(function(formations){
@@ -149,7 +149,7 @@ export default {
     },
     fetchPresentation() {
             let self = this
-            fetch('http://localhost:3000/presentation')
+            fetch('https://claireb.sadadou.fr/presentation')
             .then(function(response){
                 return response.json()
             })
@@ -172,7 +172,11 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("/static/fonts/Roboto-Regular.ttf")
+  src: url("/porfolio/static/fonts/Roboto-Regular.ttf")
+}
+@font-face{
+  font-family: "RobotoBold";
+  src: url("/portfolio/static/fonts/Roboto-Bold.ttf")
 }
 .div-cv{
   width: 100vw;
@@ -222,7 +226,8 @@ $bleuclair: #01717D;
       .skill{
         margin-top: 0;
         margin-bottom: 0;
-        margin-right: 3px;
+        font-size: 13px;
+        
       }
     }
     .titre-flex{
@@ -286,11 +291,11 @@ $bleuclair: #01717D;
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
-      line-height: 40px;
-      height :40px;
+      line-height: 45px;
+      height :45px;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -300,6 +305,7 @@ $bleuclair: #01717D;
       .navlink{
         text-decoration: none;
         color: black;
+        font-family: "RobotoBold";
         svg{
           width: 19px;
           height: auto;

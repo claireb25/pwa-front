@@ -63,7 +63,7 @@ export default {
     methods: {
         fetchProjets() {
             let self = this
-            fetch('http://localhost:3000/projets').then(function(response){
+            fetch('https://claireb.sadadou.fr/projets').then(function(response){
                 return response.json()
             })
             .then(function(projets){
@@ -81,7 +81,11 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("/static/fonts/Roboto-Regular.ttf")
+  src: url("/portfolio/static/fonts/Roboto-Regular.ttf")
+}
+@font-face{
+  font-family: "RobotoBold";
+  src: url("/portfolio/static/fonts/Roboto-Bold.ttf")
 }
 #div-projets{
     width: 100vw;
@@ -143,11 +147,11 @@ $bleuclair: #01717D;
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
-      line-height: 40px;
-      height :40px;
+      line-height: 45px;
+      height :45px;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -157,6 +161,7 @@ $bleuclair: #01717D;
       .navlink{
         text-decoration: none;
         color: black;
+        font-family: "RobotoBold";
         svg{
           width: 19px;
           height: auto;

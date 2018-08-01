@@ -6,7 +6,7 @@
         <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="">
         <p>réalisé en {{ projet.annee }} pour {{ projet.lieu }}</p>
     
-        <div> {{ projet.description}}</div>
+        <div> {{ projet.description }}</div>
         
         <div class="titre-flex"><p class="triangle3"></p>
         <h2>Compétences</h2></div>
@@ -56,7 +56,7 @@
     methods:{
         fetchProjet(id) {
             let self = this
-            fetch('http://localhost:3000/projets/'+id)
+            fetch('https://claireb.sadadou.fr/projets/'+id)
             .then(function(response){
                 return response.json()
             })
@@ -68,7 +68,8 @@
       },
     },
     created: function(){
-    this.id = this.$route.params.id
+    // this.$route.params.id = Number($route.params.id)
+    this.id = Number(this.$route.params.id)
     this.fetchProjet(this.id)
   }
    
@@ -80,9 +81,12 @@
   $bleuclair: #01717D;
   @font-face {
     font-family: "RobotoReg";
-    src: url("/static/fonts/Roboto-Regular.ttf")
+    src: url("/portfolio/static/fonts/Roboto-Regular.ttf")
   }
-
+  @font-face{
+    font-family: "RobotoBold";
+    src: url("/portfolio/static/fonts/Roboto-Bold.ttf")
+  }
   #div-projet {
     width: 100vw;
     margin: 0;
@@ -109,7 +113,7 @@
     .contenu-projet{
       width:80%;
       margin: auto auto 80px auto;
-      font-size: 12px;
+      font-size: 13px;
       .image-projet{
         width: 100%;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
@@ -159,11 +163,11 @@
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
-      line-height: 40px;
-      height :40px;
+      line-height: 45px;
+      height :45px;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -173,6 +177,7 @@
       .navlink{
         text-decoration: none;
         color: black;
+         font-family: 'RobotoBold';
         svg{
           width: 19px;
           height: auto;

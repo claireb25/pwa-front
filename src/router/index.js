@@ -7,6 +7,7 @@ import Blog from '@/components/Blog'
 import Contact from '@/components/Contact'
 import Projet from '@/components/Projet'
 import Article from '@/components/Article'
+import { NOTFOUND } from 'dns';
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +46,10 @@ export default new Router({
       path: '/contact',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path:'*',
+      redirect: '/index.html'
     }
   ]
 })

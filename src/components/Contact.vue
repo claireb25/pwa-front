@@ -14,20 +14,20 @@
         <form class="form" @submit.prevent="onSubmit" method="post" action="">
        
              <label for="lastName"></label>
-            <input :class="{ error: $v.lastName.$error}" type="text" id="lastName" v-model.trim="lastName"  placeholder="Nom">
+            <input :class="{ error: $v.lastName.$error}" type="text" id="lastName" v-model.trim="lastName" name="lastName" placeholder="Nom">
             <div v-if="$v.lastName.$dirty">
                <p class="error-message" v-if="!$v.lastName.required">Veuillez entrer votre nom</p>
           
           </div>
      
                 <label for="firstName"></label>
-                <input  type="text" id="firstName" v-model.trim="firstName" @input="$v.firstName.$touch()" placeholder="Prénom">
+                <input  type="text" id="firstName" v-model.trim="firstName" @input="$v.firstName.$touch()" name="firstName" placeholder="Prénom">
                 <div v-if="$v.firstName.$dirty">
         
             </div>
           
                 <label for="email"></label>
-                <input :class="{ error: $v.email.$error }" type="text" id="email" v-model.trim="email" placeholder="contact@me.com">
+                <input :class="{ error: $v.email.$error }" type="text" id="email" v-model.trim="email"  name="email" placeholder="contact@me.com">
                 <div v-if="$v.email.$dirty">
                   <p class="error-message" v-if="!$v.email.required">Veuillez saisir une adresse e-mail</p>
                   <p class="error-message" v-if="!$v.email.email">Adresse e-mail non valide</p>
@@ -35,13 +35,14 @@
             </div>
          
                 <label for="message"></label>
-                <textarea :class="{ error: $v.message.$error }" type="textarea" id="message" v-model.trim="message" @input="$v.message.$touch()" placeholder="Message"></textarea>
+                <textarea :class="{ error: $v.message.$error }" type="textarea" id="message" v-model.trim="message" @input="$v.message.$touch()" name="message" placeholder="Message"></textarea>
                 <div v-if="$v.message.$dirty">
                   <p class="error-message" v-if="!$v.message.required">Veuillez entrer un message</p>
                 </div>
            
                <input class="btn" type="submit" @click="validate"  value="Envoyer">
         </form>
+        <div id="response-envoi"></div>
 
 
      
@@ -121,17 +122,19 @@ export default {
       presentation:{},
       msg: "",
       form: {
-        lastName: '',
-        firstName: '',
-        email: '',
-        message: ''
+        // lastName: '',
+        // firstName: '',
+        // email: '',
+        // message: '',
+        attemptSubmit: false,
+        postStatus: false
       },
     }
   },
   methods: {
         fetchPresentation() {
             let self = this
-            fetch('http://localhost:3000/presentation')
+            fetch('https://claireb.sadadou.fr/presentation')
             .then(function(response){
                 return response.json()
             })
@@ -141,23 +144,46 @@ export default {
             })
         },
           validate () {
-            console.log('hihi')
             this.$v.$touch() // it will validate all fields
             if (!this.$v.$invalid) { // invalid, becomes true when a validations return false
             //  you dont have validation error.So do what u want to do here
-              console.log(this.lastName)
+          
             }
           },
-          onSubmit () {
-            console.log('submit!')
+          onSubmit (e) {
+            e.preventDefault();
+            const url = 'https://claireb.promo-17.codeur.online/mail/envoi.php';
+            var data = new FormData();
+           
+            data.append("name", this.lastName)
+            data.append("firstname", this.firstName)
+            data.append("email", this.email)
+            data.append("message", this.message)
+            var paramAjax = {
+              method :"POST",
+              body : data
+            }
+            fetch(url, paramAjax)
+            .then(function(response){
+                return response.text()
+            })
+            .then(function(response){
+            console.log(response)
+            
+            })
+           
             this.$v.$touch()
             if (this.$v.$invalid) {
               this.submitStatus = 'ERROR'
+              document.getElementById('response-envoi').innerHTML = this.submitStatus;
             } else {
               // do your submit logic here
-              this.submitStatus = 'PENDING'
+              this.submitStatus = 'Envoi en cours'
+              document.getElementById('response-envoi').innerHTML = this.submitStatus;
               setTimeout(() => {
-                this.submitStatus = 'OK'
+                this.submitStatus = 'Votre message a bien été envoyé ! Vous serez recontacté rapidement.';
+                document.getElementById('response-envoi').innerHTML = "";
+                document.getElementById('response-envoi').innerHTML = this.submitStatus;
               }, 500)
             }
           }
@@ -167,7 +193,7 @@ export default {
       required
     },
     firstName: {
-      required
+    
     },
     email: {
       required,
@@ -188,7 +214,11 @@ export default {
 $bleuclair: #01717D;
 @font-face{
   font-family: "RobotoReg";
-  src: url("/static/fonts/Roboto-Regular.ttf")
+  src: url("/portfolio/static/fonts/Roboto-Regular.ttf")
+}
+@font-face{
+  font-family: "RobotoBold";
+  src: url("/portfolio/static/fonts/Roboto-Bold.ttf")
 }
 .div-contact{
   width: 100vw;
@@ -281,11 +311,11 @@ $bleuclair: #01717D;
     background-color: white;
     display: flex;
     justify-content: space-around;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     border-top: $bleuclair 1px solid;
-    line-height: 40px;
-    height :40px;
+    line-height: 45px;
+    height :45px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -295,6 +325,7 @@ $bleuclair: #01717D;
     .navlink{
       text-decoration: none;
       color: black;
+      font-family: 'RobotoBold';
       svg{
         width: 19px;
         height: auto;

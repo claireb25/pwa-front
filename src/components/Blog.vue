@@ -5,14 +5,11 @@
       <h1>Mes articles</h1>
       
       <div class="one-article" v-bind:key="post" v-for="post in coucou" v-if="post.author == 5">
-        <!-- <a v-if="post.featured_media" :href="post.link">
-						<img :src="post.featured_media.source_url" />
-
-					</a> -->
+     
          
         <h2 class="post-title" v-html="post.title.rendered"></h2>
         <div class="post-excerpt" v-if="post.excerpt.rendered" v-html="post.excerpt.rendered"></div>
-        	<!-- <a class="button read-more" :href="post.link" target="_blank">+ sur le blog</a> -->
+
           <router-link  class="read-more" v-bind:to="`/Article/${post.id}`">en savoir plus</router-link>
       </div>
       </div>
@@ -50,7 +47,7 @@
     name: 'Blog',
     data() {
       return {
-        postsUrl: 'http://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts',
+        postsUrl: 'https://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts',
         coucou:[],
    
       }
@@ -80,9 +77,12 @@
   $bleuclair: #01717D;
   @font-face {
     font-family: "RobotoReg";
-    src: url("/static/fonts/Roboto-Regular.ttf")
+    src: url("/portfolio/static/fonts/Roboto-Regular.ttf")
   }
-
+@font-face{
+  font-family: "RobotoBold";
+  src: url("/portfolio/static/fonts/Roboto-Bold.ttf")
+}
   #div-blog {
     width: 100vw;
     margin: 0;
@@ -139,11 +139,11 @@
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
-      line-height: 40px;
-      height: 40px;
+      line-height: 45px;
+      height: 45px;
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -153,6 +153,7 @@
       .navlink {
         text-decoration: none;
         color: black;
+         font-family: 'RobotoBold';
         svg {
           width: 19px;
           height: auto;

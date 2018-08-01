@@ -11,6 +11,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+html { overflow-x: hidden; } 
 body, #app{
    margin: 0;
 }
