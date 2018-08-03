@@ -6,7 +6,7 @@
         <img class="image-projet" v-bind:src="`${projet.mainImg}`" alt="">
         <p>réalisé en {{ projet.annee }} pour {{ projet.lieu }}</p>
     
-        <div> {{ projet.description }}</div>
+        <div><span v-html="projet.description"></span></div>
         
         <div class="titre-flex"><p class="triangle3"></p>
         <h2>Compétences</h2></div>
@@ -113,7 +113,7 @@
     .contenu-projet{
       width:80%;
       margin: auto auto 80px auto;
-      font-size: 13px;
+      font-size: 14px;
       .image-projet{
         width: 100%;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
@@ -138,7 +138,7 @@
       }
     }
       div.competences{
-        text-transform: uppercase;
+        // text-transform: uppercase;
         margin-bottom: 25px;
       
       }
@@ -163,7 +163,7 @@
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 13px;
+      font-size: 16px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
       line-height: 45px;
@@ -177,7 +177,7 @@
       .navlink{
         text-decoration: none;
         color: black;
-         font-family: 'RobotoBold';
+         font-family: 'RobotoReg';
         svg{
           width: 19px;
           height: auto;

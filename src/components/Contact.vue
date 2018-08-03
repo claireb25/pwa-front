@@ -152,41 +152,46 @@ export default {
           },
           onSubmit (e) {
             e.preventDefault();
-            const url = 'https://claireb.promo-17.codeur.online/mail/envoi.php';
-            var data = new FormData();
-           
-            data.append("name", this.lastName)
-            data.append("firstname", this.firstName)
-            data.append("email", this.email)
-            data.append("message", this.message)
-            var paramAjax = {
-              method :"POST",
-              body : data
-            }
-            fetch(url, paramAjax)
-            .then(function(response){
-                return response.text()
-            })
-            .then(function(response){
-            console.log(response)
-            
-            })
-           
             this.$v.$touch()
-            if (this.$v.$invalid) {
-              this.submitStatus = 'ERROR'
-              document.getElementById('response-envoi').innerHTML = this.submitStatus;
-            } else {
-              // do your submit logic here
-              this.submitStatus = 'Envoi en cours'
-              document.getElementById('response-envoi').innerHTML = this.submitStatus;
-              setTimeout(() => {
-                this.submitStatus = 'Votre message a bien été envoyé ! Vous serez recontacté rapidement.';
-                document.getElementById('response-envoi').innerHTML = "";
+              if (this.$v.$invalid) {
+                this.submitStatus = '<p class="fail"> L\'envoi de votre email a échoué </p>';
                 document.getElementById('response-envoi').innerHTML = this.submitStatus;
-              }, 500)
-            }
+              } 
+              else {
+                if(navigator.onLine){
+                  const url = 'https://claireb.promo-17.codeur.online/portfolio/static/model/envoi.php';
+                  var data = new FormData();
+                  data.append("name", this.lastName)
+                  data.append("firstname", this.firstName)
+                  data.append("email", this.email)
+                  data.append("message", this.message)
+                  var paramAjax = {
+                    method :"POST",
+                    body : data
+                  }
+                  fetch(url, paramAjax)
+                  .then(function(response){
+                      return response.text()
+                  })
+                  .then(function(response){
+                  console.log(response)
+                
+                  })
+                    this.submitStatus = '<p class="pending">Envoi en cours</p>'
+                    document.getElementById('response-envoi').innerHTML = this.submitStatus;
+                    setTimeout(() => {
+                      this.submitStatus = '<p class="success">Votre message a bien été envoyé ! Vous serez recontacté rapidement.</p>';
+                      document.getElementById('response-envoi').innerHTML = "";
+                      document.getElementById('response-envoi').innerHTML = this.submitStatus;
+                    }, 500)
+                  } 
+                  else {
+                      this.submitStatus = '<p class="fail">Vous êtes hors ligne! L\'envoi de votre message a échoué!</p>'
+                      document.getElementById('response-envoi').innerHTML = this.submitStatus
+                  }
+              }
           }
+  
   },
   validations: {
     lastName: {
@@ -265,13 +270,14 @@ $bleuclair: #01717D;
         input,textarea{
         resize: none;
         color: $bleuclair;
+        border-radius: none;
         border-top: none;
         border-left: none;
         border-right:none;
         border-bottom: 1px solid black;
         margin : 14px 0;
         padding: 6px 0;
-        font-size: 14px;
+        font-size: 16px;
       }
       textarea#message{
         height:100px;
@@ -290,10 +296,10 @@ $bleuclair: #01717D;
       input::placeholder, textarea::placeholder{
         color : $bleuclair;
         font-family: "RobotoReg";
-        font-size: 14px;
+        font-size: 16px;
       }
       .error-message{
-        font-size: 12px;
+        font-size: 16px;
         color: red;
         margin: 0;
       }
@@ -311,7 +317,7 @@ $bleuclair: #01717D;
     background-color: white;
     display: flex;
     justify-content: space-around;
-    font-size: 13px;
+    font-size: 16px;
     text-transform: uppercase;
     border-top: $bleuclair 1px solid;
     line-height: 45px;
@@ -325,7 +331,7 @@ $bleuclair: #01717D;
     .navlink{
       text-decoration: none;
       color: black;
-      font-family: 'RobotoBold';
+      font-family: 'RobotoReg';
       svg{
         width: 19px;
         height: auto;

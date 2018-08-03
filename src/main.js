@@ -10,11 +10,10 @@ import CV from './components/CV'
 import Projet from './components/Projet'
 import Projets from './components/Projets'
 import Article from './components/Article'
-import VuePrism from 'vue-prism'
 import Vuelidate from 'vuelidate'
-Vue.use(VuePrism)
+
 Vue.use(Vuelidate)
-import 'prismjs/themes/prism.css'
+
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -53,7 +52,5 @@ if ('serviceWorker' in navigator) {
     }, function(err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
-
+    })
+  })}

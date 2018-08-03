@@ -47,7 +47,7 @@
     name: 'Blog',
     data() {
       return {
-        postsUrl: 'https://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts',
+        postsUrl: 'https://promo-17.codeur.online/blog/index.php/wp-json/wp/v2/posts?per_page=50',
         coucou:[],
    
       }
@@ -139,7 +139,7 @@
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 13px;
+      font-size: 16px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
       line-height: 45px;
@@ -153,7 +153,7 @@
       .navlink {
         text-decoration: none;
         color: black;
-         font-family: 'RobotoBold';
+         font-family: 'RobotoReg';
         svg {
           width: 19px;
           height: auto;

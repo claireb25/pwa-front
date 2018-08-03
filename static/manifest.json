@@ -1,0 +1,36 @@
+{
+    "short_name": "CB",
+    "name": "Claire Bourgeois - Portfolio",
+    "start_url": "https://claireb.promo-17.codeur.online/portfolio/",
+    "theme_color": "#dea90f",
+    "background_color": "#dea90f",
+    "display": "standalone",
+    "description": "Portfolio de Claire Bourgeois, réalisé avec Vue.js",
+    "scope": "/index.html",
+    "icons": [{
+      "src": "logo-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }, {
+      "src": "logo-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }, {
+      "src": "logo-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "logo-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }, {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }]
+  }
+  

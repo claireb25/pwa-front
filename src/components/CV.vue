@@ -222,7 +222,7 @@ $bleuclair: #01717D;
     }
     .competences{
       line-height: 25px;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       .skill{
         margin-top: 0;
         margin-bottom: 0;
@@ -243,7 +243,7 @@ $bleuclair: #01717D;
         margin-right: 10px;
       }
       h2{
-        font-size: 16px;
+        font-size: 19px;
         padding-bottom: 4px
         // margin-bottom: 10px;
       }
@@ -251,7 +251,7 @@ $bleuclair: #01717D;
     .contenu-exp{
       display: flex;
       align-content: center;
-
+      font-size: 13px;
       .poste-entreprise{
         margin-bottom:15px;
         p{
@@ -291,7 +291,7 @@ $bleuclair: #01717D;
       background-color: white;
       display: flex;
       justify-content: space-around;
-      font-size: 13px;
+      font-size: 16px;
       text-transform: uppercase;
       border-top: $bleuclair 1px solid;
       line-height: 45px;
@@ -305,7 +305,7 @@ $bleuclair: #01717D;
       .navlink{
         text-decoration: none;
         color: black;
-        font-family: "RobotoBold";
+        font-family: "RobotoReg";
         svg{
           width: 19px;
           height: auto;
